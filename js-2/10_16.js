@@ -8,7 +8,7 @@
 // ・pop(), push(), shift(), unshift()
 // 4: looping
 // ・for,  for..of, for..in(es6), while , do..while
-//   (→ how can we print all elements inside an array of  object?)
+//   (→ how can we print each elements inside an array of  object?)
 
 
 // topic:1-------------------------------------------------------------------
@@ -52,7 +52,7 @@ console.log("classObj2", !classObj[3] ? "this exsists" : "this dosenot exsist");
 let isYoung = classObj[2].age < 30;
 console.log("classObj2", isYoung ? "the person is youngest" : "the person is not youngest");
 // なんか｜｜だと、どっちかが行われる処理になるらしいよ。だからtrueが表示される。
-// ＆＆だと、trueだと、＆＆以下の処理が行われるって処理になるらしい。よくわからないけど笑
+// ＆＆だと、trueだと、＆＆以下の処理が行われるって処理になるらしい。
 console.log("classObj2", isYoung && "the person is youngest!!!")
 
 
@@ -75,65 +75,49 @@ console.log(favorite(fruit));
 
 // topi:3-----------------------------------------------------------
 
-// pop and push
+/* when you want to add a new element to an array ... unshift() or push()  */
+
 let animalArr = ["giraff", "cat"];
-// push() method add one of more elemnt to the end of an array and returnsthe new lengthof the array.
+
+// unshift() method add one or more element at the beginning of an array the new length of the array.
+animalArr.unshift("alpaca");
+console.log("animals", animalArr)
+// push() method add one of more elemnt to the end of an array and returns the new length of the array.
 animalArr.push("lion");
 console.log(animalArr);
+
+
+
+/* when you want to remove an element from an array ... shift() or pop()*/
+
+// shift() method removes the first element from an array.
+animalArr.shift();
 // pop() method removes the last element from and array and returns that element.
 animalArr.pop();
 console.log(animalArr);
 
-animalArr.pop();
-console.log(animalArr);
 // ちなみに引数に　変数.pop()を渡すと、outputはremoveされたelementになる。
 // returnとしては、取り除く系のpop()とshift()はその取り除かれた要素を、逆に付け加える系の pushとunshiftは新しいarrayのlengthを返すっていう共通点。
 console.log(animalArr.pop());
 
 
-
-// shift and unshift
-// removed the first element 
-animalArr.shift();
-// added one or more element at the beginning of an array and return 
-animalArr.unshift("alpaca");
-console.log("animals",animalArr)
-
-
-let deviceArr = ["iphone", "android", "ipad", "pixel"];
-console.log("deviceArr", deviceArr.length)
-
-// こうやってlengthを変えるのは、実際には全然やらない作業らしいけど、、
-deviceArr.length = 2;
-console.log("devixceArr", deviceArr);
-
-deviceArr.length = 5;
-console.log("devixceArr", deviceArr);
-console.table(classObj);
-
-
 // topic:4 ------------------------------------------------------------------
 
-// for 
+
 let houseType = ["bachelor", "condo", "apartment", "house", "basement"]
+
+// for 
 for (let i = 0; i < houseType.length; i++) {
     console.log(`housetype no.${i}.${houseType[i]}`);
 }
 
 // for ... of = this statement creates a loop itetating over iterable object like array .
-
-// for-of has following syntax
-// on each iteration a value of different property is assigned to valiable.
-// for (let variable itarableObject) {
-//     
-// }
-
-
 for (let type of houseType) {
     console.log(`${type}`)
 }
 
-// the output is the contents of an array 
+// the output : printed ["bachelor", "condo", "apartment", "house", "basement"] 5 times.
+// (it's because this array is assigned to the variable "type" each time)
 for (let type of houseType) {
     console.log(`${houseType}`)
 }
@@ -149,20 +133,23 @@ for (let typeIndex in houseType) {
     console.log(houseType[typeIndex]);
 }
 
-// もっとわかりやすい例で、、こういう人間の情報を管理するオブジェクトがあったとする。
-// こういう個々のプロパティとかを抽出したり、何か処理を加える時に便利なのがfor-in文。（それぞれの要素が変数に格納されるから）
+
+
+// ex2
 var obj = {
-    name: '太郎',
+    name: 'John',
     age: 45,
     country: 'Japan'
 }
 
 // got properties . passed item to print all properties.
+// the output: name age country (key)
 for( var item in obj ) {
     console.log( item );
 }
 
 // got  values of each property. that's why you need to use obj[item].
+// the output: John 45 Japan (value)
 for ( var item in obj ) {
     console.log( obj[item] );
 }
@@ -174,15 +161,14 @@ let weather = {
     date:"Nov 16th"
 }
 
-// for..in give you index = key(in this case)
+// for..in give you index 
 for (let key in weather) {
     console.log("key", key ,weather[key])
 }
 
-//結局のところ、for-inとfor-ofの違いは？
-// 多分、純粋に格納してる変数でprintすると、for-inはindexで取得してるから0−３の数字で、逆にfor-ofは値で取得するから、"a"-"d"で表示されるって違い！
-// for-inはインデックス！！keyを取得、ドット使えばvalueを取得できるって仕組み！
+//結what is the difference between for..in and for..of
 let alphabet = ["a", "b", "c", "d"]
 for (var n in alphabet) console.log(n);
+// the output: 0 1 2 3 (index)
 for (var n of alphabet) console.log(n);
-
+// the output: a b c d (value)

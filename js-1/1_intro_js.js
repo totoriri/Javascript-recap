@@ -67,6 +67,7 @@ console.log("6:pets", risaObj.pet);
 
 // this is how to print the value that object has.
 console.log(risaObj.profession)
+// this is how to acess the value inside an array using index number.
 console.log(risaObj.pet[0])
 
 console.log(risaObj["profession"]);
@@ -75,20 +76,17 @@ const jobtitle = "profession";
 console.log(risaObj[jobtitle]);
 
 
-// 解説
-// オブジェクトのプロパティにアクセスする方法として、ドット記法（.）を使う方法とブラケット記法（[]）がある。
-// それぞれの記法で、オブジェクトの右辺へプロパティ名を指定すると、その名前をもったプロパティの値を参照できる。
-
+// You can access object properties in two ways: . or [] 
 const obj = {
     key: "value"
 };
-// ドット記法で参照
+// .dot
 console.log(obj.key); // => "value"
-// ブラケット記法で参照
+// []
 console.log(obj["key"]); // => "value"
 
 
-// this is the difference betwwen []squreblacket and .(dot)
+// this is the difference between []squreblacket and .(dot)
 const keyName = "webdev";
 
 let classes = {
@@ -96,7 +94,7 @@ let classes = {
 }
 
 console.log(classes[keyName]);
-// you need to write webdev because of dot and viriable declearion.
+// you need to write webdev because of dot and variable declearion.
 console.log(classes.webdev);
 
 // ex2(どうやってvalue 取り出すかの例２)
