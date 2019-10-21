@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+        <h1 onmouseover="handleMouseOver()" onmouseout="handleMouseout()">Title</h1>
+        <button onclick="handleClick()">Click this button</button>
+    
+        <form>
+          <input id="NameInput" onfocus="handleFocus()" onblur="handleBlur()" onkeypress="handleInputChange(event)" type="text" name="name" placeholder="ex: Ayako" />
+          <button onclick="handleFormClick(event)">Submit</button>
+        </form>
+    
+        <ul id="NameLists">
+          <li>Isao</li>
+        </ul>
+    
+
+    <!-- <script src ="index.js"></script> -->
+    <script src="html5_events.js"></script>
+</body>
+</html>
