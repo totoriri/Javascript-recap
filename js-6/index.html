@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script >
+    
+    function examplePromise(str){
+        return new Promise((resolve,reject) =>{
+            // if striing exist
+         if(str){
+            resolve(`hi ${str}`)
+         }else{
+             reject(`oops,sting dosen't exist!`)
+         }
+        });
+    }
+　　　
+    // １.then
+    // examplePromise('ayako').then((result) =>{
+    // console.log(result)
+    // }).catch((err)=>{
+    //         console.log(err)
+    // })
+
+
+// 　　　２
+    async function executeExamplePromise(){
+        try{
+            // in this case , if you deleate this str ,the error message 
+            const result = await examplePromise('shota')
+
+            // this console will execute if we get resolve()
+            console.log(result)
+        }catch(err){
+            // will 
+            console.log(err)
+        }
+    }
+    // output: "hi,shota"
+    executeExamplePromise();
+
+   
+
+
+    function scaryClown(isScary){
+        return new Promise((resolve,rejected) => {
+            isScary? resolve ('🤡') :rejected('not scary');
+        });
+    }
+
+
+    // async
+    async function executeScaryClown(){
+        try{
+            const outcome = await scaryClown(true)
+            console.log(outcome)
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    executeScaryClown();
+
+
+    // then
+    scaryClown(true).then((results) =>{
+    console.log(results)
+    }).catch((err)=>{
+            console.log(err)
+    })
+
+
+    　　 // ES7-8
+    // fetch('https://api.github.com/repos/Saayaman/web-development-course/pulls')
+    //   .then((res) => { return res.json()})
+    //   .then((result) => console.log(result))
+    //   .catch(err => console.log(err))
+    
+
+    (async () => {
+   try {
+    const result = await fetch('https://api.github.com/repos/Saayaman/web-development-course/pulls');
+    const json = await result.json();
+    console.log(json[0].url)
+   } catch (error) {
+     console.log(error);
+   }
+  })();
+  
+    //jquery or html ajax call
+ 
+    </script>
+    <script src="fetch_api_assignment.js"></script>
+</body>
+</html>
