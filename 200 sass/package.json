@@ -1,0 +1,19 @@
+{
+  "name": "sass-practice",
+  "version": "1.0.0",
+  "description": "this is node-sass practice project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss":"node-sass --watch scss -o css"
+  },
+  "keywords": [
+    "sass",
+    "node"
+  ],
+  "author": "Risa Takata",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^4.13.0"
+  }
+}

@@ -1,0 +1,7 @@
+h1 {
+  color: red; }
+  h1 .example {
+    color: green; }
+
+h2 .example {
+  font-size: 30px; }

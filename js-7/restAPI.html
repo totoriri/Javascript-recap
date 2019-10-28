@@ -56,7 +56,11 @@
       "Content-type": "application/json; charset=UTF-8"
     }
   })
-  .then(response => response.json())
+  // 
+  .then(response => response.json().then())
+  // プロミスが帰ってくるから、thenが使える。（もう何行か書き足したりして）return書かないなら、json（).then()って書かなきゃいけなくなる
+  
+  // 
   .then(json => console.log(json))
 
 

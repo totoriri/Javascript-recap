@@ -7,17 +7,48 @@
     <title>Document</title>
 </head>
 <body>
+
+    <script src="API_key.js"></script>
     <script>
-        const endpoint = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/north-india-restaurant-san-francisco"
-        fetch(endpoint,{
-            // ここにkey入れてる（headerのなか）
-            headers:{
-                'Authorization':"Bearer"
-            }
-        })
-        .then(response => response.json())
-        .then((result) => console.log(result))
-        .catch((err) => console.log(err));
+        // const endpoint = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/north-india-restaurant-san-francisco"
+        // fetch(endpoint,{
+        //     // ここにkey入れてる（headerのなか）
+        //     headers:{
+        //         'Authorization':`Bearer ${api_keys.YELP_API_KEY}`
+        //     }
+        // })
+        // .then(response => response.json())
+        // .then((result) => console.log(result))
+        // .catch((err) => console.log(err));
+　　　　
+        const corsAccess = 'https://cors-anywhere.herokuapp.com/'
+        const superheroEndpoint=`https://superheroapi.com/api/${api_keys.HEROS_API}`
+        
+        function clickHero(){
+            const heroName = document.getElementById('heroName').value;
+            console.log('heroName',heroName)
+
+            fetch(`${corsAccess}${superheroEndpoint}/search/${heroName}`)
+            .then((res) => res.json())
+            .then((result) => showCharacter(result))
+            .catch((err) => console.log(err));
+
+           
+        }
+
+        function showCharacter(result) {
+      const heroData = document.getElementById('heroData');
+      const list = result.results.map((result) => {
+        const listHtml = `<div>${result.name} <img src="${result.image.url}" /></div>`
+        heroData.insertAdjacentHTML( 'beforeend', listHtml );
+      })
+    }
+        
     </script>
+
+    <input id="heroName">
+    <button onclick="clickHero()">click</button>
+
+    <div id="heroData"></div>
 </body>
 </html>
